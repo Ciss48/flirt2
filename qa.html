@@ -165,8 +165,16 @@
         const modal = document.getElementById('modal');
 
         function moveNoButton() {
-            const x = Math.random() * (window.innerWidth - noButton.clientWidth);
-            const y = Math.random() * (window.innerHeight - noButton.clientHeight);
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
         }
